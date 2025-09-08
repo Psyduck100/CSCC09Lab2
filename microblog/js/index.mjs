@@ -26,10 +26,24 @@ document
   });
 
 
-let deleteBtn = document.getElementsByClassName("delete-icon");
-for (let i = 0; i < deleteBtn.length; i++){
-  deleteBtn[i].addEventListener("click", function(e) {
-    let post = e.target.parentElement;
-    post.remove();
-  })
-}
+let messages = document.getElementById("messages");
+messages.addEventListener("click", function (e) {
+  if (e.target.classList.contains("delete-icon")){
+    e.target.parentElement.remove();
+  }
+
+})
+
+messages.addEventListener("click", function (e) {
+  if (e.target.classList.contains("downvote-icon")){
+    let num = parseInt(e.target.textContent) + 1
+    e.target.textContent = num
+  }
+})
+
+messages.addEventListener("click", function (e) {
+  if (e.target.classList.contains("upvote-icon")){
+    let num = parseInt(e.target.textContent) + 1
+    e.target.textContent = num
+  }
+})
