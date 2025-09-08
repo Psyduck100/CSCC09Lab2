@@ -4,12 +4,12 @@ document
     // prevent from refreshing the page on submit
     e.preventDefault();
     // read form elements
-    username = document.getElementById("post_name").value;
-    content = document.getElementById("post_content").value;
+    let username = document.getElementById("post_name").value;
+    let content = document.getElementById("post_content").value;
     // clean form
     document.getElementById("create_message_form").reset();
     // create a new message element
-    elmt = document.createElement("div");
+    let elmt = document.createElement("div");
     elmt.className = "message";
     elmt.innerHTML = `
         <div class="message_user">
@@ -24,3 +24,12 @@ document
     // add this element to the document
     document.getElementById("messages").prepend(elmt);
   });
+
+
+let deleteBtn = document.getElementsByClassName("delete-icon");
+for (let i = 0; i < deleteBtn.length; i++){
+  deleteBtn[i].addEventListener("click", function(e) {
+    let post = e.target.parentElement;
+    post.remove();
+  })
+}
